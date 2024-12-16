@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<title>uVariants at dna-utah.org - All Rights Reserved 2017 - 2020 #awesome</title>
+  <meta name="description" content="uVariants at dna-utah.org is SNP-driven annotation and primer design software">
+  <meta name="keywords" content="SNP, ENSEMBL, Variation, Primer Design">
+  <meta name="author" content="Zachary Dwight">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bootstrap.min.css"><link rel="stylesheet" href="boot_checkbox.css">
+
+<script>
+if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile/i.test(navigator.userAgent)){
+if(document.URL !="https://dna-utah.org/mobile")
+{
+alert('uVariants uses web services and GUI elements that may not work with your mobile device.  Your window will now redirect to our sweet tutorial video.  For more information contact: zach.dwight@path.utah.edu');
+window.location = "https://dna-utah.org/variants/vid.html";
+}
+}
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="hexamadness.js"></script>
+<style>
+
+.wordwrap {
+
+
+
+white-space: pre-wrap; /* CSS3 */
+
+white-space: -moz-pre-wrap; /* Firefox */
+
+white-space: -pre-wrap; /* Opera <7 */
+
+white-space: -o-pre-wrap; /* Opera 7 */
+
+word-wrap: break-word; /* IE */
+
+}
+
+.input-group-addon.primary {
+
+color: rgb(255, 255, 255);
+
+background-color: rgb(50, 118, 177);
+
+border-color: rgb(40, 94, 142);
+
+}
+
+.input-group-addon.success {
+
+color: rgb(255, 255, 255);
+
+background-color: rgb(92, 184, 92);
+
+border-color: rgb(76, 174, 76);
+
+}
+
+.input-group-addon.info {
+
+color: rgb(255, 255, 255);
+
+background-color: rgb(57, 179, 215);
+
+border-color: rgb(38, 154, 188);
+
+}
+
+
+</style>
+
+
+
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+<!--[if lt IE 9]>
+
+<script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
+
+<script src="../bower_components/respond/dest/respond.min.js"></script>
+
+<![endif]-->
+<style>
+	.modalDialog {
+		position: fixed;
+		font-family: Arial, Helvetica, sans-serif;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0,0,0,0.8);
+		z-index: 99999;
+		opacity:0;
+		-webkit-transition: opacity 400ms ease-in;
+		-moz-transition: opacity 400ms ease-in;
+		transition: opacity 400ms ease-in;
+		pointer-events: none;
+	}
+
+	.modalDialog:target {
+		opacity:1;
+		pointer-events: auto;
+	}
+
+	.modalDialog > div {
+		width: 400px;
+		position: relative;
+		margin: 10% auto;
+		padding: 5px 20px 13px 20px;
+		border-radius: 10px;
+		background: black;
+		background: -moz-linear-gradient(#333333 , #333333);
+		background: -webkit-linear-gradient(#333333, #333333);
+		background: -o-linear-gradient(#333333, #333333);
+	}
+
+	.close {
+		background: #606061;
+		color: #FFFFFF;
+		line-height: 25px;
+		position: absolute;
+		right: -12px;
+		text-align: center;
+		top: -10px;
+		width: 24px;
+		text-decoration: none;
+		font-weight: bold;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		border-radius: 12px;
+		-moz-box-shadow: 1px 1px 3px #000;
+		-webkit-box-shadow: 1px 1px 3px #000;
+		box-shadow: 1px 1px 3px #000;
+	}
+	
+	.legendlink {
+		color: #FFFFFF;
+	}
+	.iframed {
+		background: white;
+	}
+
+	.close:hover { background: #00d9ff; }
+
+	.modalDialog2 {
+		position: fixed;
+		font-family: Arial, Helvetica, sans-serif;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0,0,0,0.8);
+		z-index: 99999;
+		opacity:0;
+		-webkit-transition: opacity 400ms ease-in;
+		-moz-transition: opacity 400ms ease-in;
+		transition: opacity 400ms ease-in;
+		pointer-events: none;
+	}
+
+	.modalDialog2:target {
+		opacity:1;
+		pointer-events: auto;
+	}
+
+
+	.modalDialog2 > div {
+		width: 625px; height: 675px;
+		position: relative;
+		margin: 10% auto;
+		padding: 5px 20px 13px 20px;
+		border-radius: 10px;
+		background: black;
+		background: -moz-linear-gradient(#333333 , #333333);
+		background: -webkit-linear-gradient(#333333, #333333);
+		background: -o-linear-gradient(#333333, #333333);
+	}
+	
+	#snpdrop {
+		background-color: silver; color: #000;
+	}
+	
+
+	</style>
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+<div class="container">
+
+<div class="navbar-header">
+
+    <a href="" class="navbar-brand">uVariants <sup>sm</sup></a>
+
+
+
+</div>
+
+<div class="navbar-collapse collapse" id="navbar-main">
+
+<ul class="nav navbar-nav">
+
+<li >
+
+<a target='_blank' href="../">Built by dna-utah.org</a>
+
+</li>
+
+<li>
+
+<a target='_blank' href="https://www.ensembl.org/">Powered by Ensembl</a>
+
+</li>
+
+<li >
+
+<a target='_blank' href="vid.html">Video Tutorial</a>
+
+</li>
+
+<li>
+
+<a target='_blank' href="https://dna-utah.org/Contacts.html" >Contact Us </a>
+
+</li>
+
+</ul>
+
+
+
+<ul class="nav navbar-nav navbar-right">
+
+<li><a href="#" target="_blank">v2.1b</a></li>
+
+</ul>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="container .col-sm-8 offset-2">
+
+
+
+<!-- Forms
+
+================================================== -->
+
+
+
+
+
+<br>
+
+
+
+<div class="row jumbotron">
+
+<div class="col-xs-12 col-sm-8">
+STATUS (Dec 2024): uVariants is on schedule to for service in 2025.  Rebuild in progress.  
+<h2>Welcome</h2>
+
+<p>SNP information can be difficult to consolidate. Let us help - because in assay design, <a target='_blank' href="https://www.ncbi.nlm.nih.gov/pubmed/24014836">context matters</a>.</p>
+
+</div>
+
+<div class="col-xs-12 col-sm-4">
+
+<h2 class="has-spinner">rs #<span class="spinner"><img src="ajax-loader.gif"/></span></h2>
+
+<div>
+
+
+
+<div ><input class="form-control" id="inputSNP" placeholder="eg 6025" type="text" /></div>
+
+<div class="input-group"><span class="input-group-addon success">+/-</span><input class="form-control " id="inputFLANK" value="100" type="text" maxlength="4" /><span class="input-group-addon success">bp</span></div>
+
+
+
+<button id="buttonsnp" type="button" class="btn btn-primary btn-lg btn-block " >Submit SNP</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div id="resultstab" style="display:none;">
+
+<label for="textArea" class="col-lg-12 control-label"><h2 id="nav-tabs">Sequence Information</h2></label>
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+
+<div class="well" id="rs">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+
+<div class="well wordwrap" id="seq" >
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row text-center">
+
+
+
+
+
+<div class="checkbox checkbox-warning checkbox-inline" >
+
+<a href="" id="snpncbilink">SNP of Interest</a>
+
+</div> &nbsp;&nbsp; | &nbsp;&nbsp;
+
+<div class="checkbox checkbox checkbox-inline" >
+
+<input type="checkbox" id="inlineCheckbox1" value="option1" checked>
+
+<label for="inlineCheckbox1"> <span class="othersnp">Frequency Available</span></label>
+
+</div> &nbsp;&nbsp; | &nbsp;&nbsp;
+
+<div class="checkbox checkbox-inline">
+
+<input type="checkbox" id="inlineCheckbox2" value="option1" checked>
+
+<label for="inlineCheckbox2"> <span class="nofreqsnp">No Frequency</span> </label>
+
+</div> &nbsp;&nbsp; | &nbsp;&nbsp;
+
+<div class="checkbox checkbox-inline">
+
+<input type="checkbox" id="6merCheckBox" value="option1" checked>
+
+<label for="6merCheckBox"> <span >3' Genomic Specificity</span> </label>
+
+
+
+</div>
+<div class="checkbox checkbox-inline">
+
+<input type="checkbox" id="SACheckBox" value="option1" >
+
+<label for="SACheckBox"> <span >Small Amplicon</span> </label>
+
+
+
+</div>
+
+</div>
+
+<hr align="center">
+<div class="row text-center" id="sel" ></div>
+<div class="row text-center" id="sal" ></div>
+<div class="row text-center" id="selmsg" ></div>
+<div class="row text-center" id="seltools" ></div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<hr align="center">
+
+<footer>
+
+<div class="row">
+
+<div class="col-lg-12" align="center">
+
+
+
+
+
+
+
+<span class="footfaded">dna-utah.org | Last Database Update: February 6 2020</span>
+
+</div>
+
+</div>
+
+
+
+
+
+</footer>
+
+
+
+<div class="well" id="rsnums" style="display: none;"></div>
+
+<div class="well" id="freq" style="display: none;"></div>
+
+<div class="well" id="annSeq" style="display: none;"></div>
+
+<div class="well" id="exons" style="display: none;"></div>
+
+
+
+<div class="well" id="hex6" style="display: none;"></div>
+
+
+<div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+        <p>Once sequence is returned, hover over annotated nucleotides for more information:</p>
+			
+			<ul>
+			<li><a href='' target='_blank'>(X/Y) SNP of Interest</a> </li>
+			<li class='othersnp'>[X/Y] Neighboring SNPs with Frequencies Reported</li>
+			<li class='nofreqsnp'>[X/Y] Neighboring SNPS with No Frequency Reported</li>
+			<li class='danger'>X Nucleotide (as 3'end) has high frequency in genome</li>
+			<li class='golden'>Y Nucleotide (as 3'end) has low frequency in genome</li>
+			</ul>
+      
+
+
+  </div>
+</div>
+
+<div id='superMode' class='modalDialog2'>
+		<div >
+			
+          <a href="#close" title="Close" class="close">X</a>
+								Allele:<select id='snpdrop' onchange='updateuMeltPreview();'></select>
+								<div id='primerprev'></div>
+								
+					            <iframe id='iframemelt' class="iframed" frameborder="1" width='600px' height='475px' > </iframe>
+								<button id='btnPrintIframe'  onclick="printMe('superMode');" >Print Preview</button><div id='snpmut'></div>
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+
+
+
+<script type="text/javascript">
+    var t = '';
+    function gText(e) {
+        t = (document.all) ? document.selection.createRange().text : document.getSelection();
+        document.getElementById('rs').value += t;
+    }
+
+    document.onmouseup = gText;
+    if (!document.all) document.captureEvents(Event.MOUSEUP);
+    
+    function getSelectionText() {
+    var text = "";
+    var activeEl = document.activeElement;
+    var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
+    if (
+      (activeElTagName == "textarea") || (activeElTagName == "input" &&
+      /^(?:text|search|password|tel|url)$/i.test(activeEl.type)) &&
+      (typeof activeEl.selectionStart == "number")
+    ) {
+        text = activeEl.value.slice(activeEl.selectionStart, activeEl.selectionEnd);
+    } else if (window.getSelection) {
+        text = window.getSelection().toString();
+    }
+    return text;
+}
+
+document.getElementById("seq").onselectionchange = function() {
+  document.getElementById("sel").innerHTML = getSelectionText();
+  
+};
+
+var userFPrimers = []; var userFTms = [];
+var userRPrimers = []; var userRTms = [];
+var selectedFPrimer = '';
+var selectedRPrimer = '';
+
+
+document.getElementById("seq").onmouseup = function() {
+	
+if(document.getElementById("inlineCheckbox2").checked == true || document.getElementById("inlineCheckbox1").checked==true){
+	$( "#selmsg" ).html( "Please uncheck both Frequency Available and No Frequency checkboxes to calculate Tm of selection.");
+	
+}else{
+	$( "#selmsg" ).html("");
+  var selectedBases = getSelectionText();
+  var tmseq = '';
+  tmseq = selectedBases.replace(' ', '');
+  tmseq = tmseq.replace('/', '');
+  tmseq = tmseq.replace(')', '');
+  tmseq = tmseq.replace('(', '');
+    tmseq = tmseq.replace(']', '');
+  tmseq = tmseq.replace('[', '');
+var lenSB = tmseq.length;
+  var tmURL = "../ths/cgi-bin/tm.cgi?mg=2.2&mono=20&seq="+tmseq+"&otype=primer&concentration=30&decimalplaces=2";
+  $.get(tmURL, function(data, status){
+    
+                    var xml = data;
+
+                    xmlDoc = $.parseXML( xml );
+
+                    $xml = $( xmlDoc );
+
+                    $tmnn = $xml.find( "tm" );
+                    
+                    var dummyseq = document.getElementById("seq").textContent;
+                    var ix = dummyseq.indexOf(")"); var primerLoc = dummyseq.indexOf(selectedBases);
+                    
+                    $( "#sel" ).append( "<input type='checkbox' id='"+selectedBases+"' value='"+selectedBases+"' >");
+                    
+                    if(ix<primerLoc==true){userRPrimers.push(selectedBases);tmseq=reverse(complement(tmseq)); $( "#sel" ).append( "Reverse (5-3') : ");}else{
+						$( "#sel" ).append( "Forward (5-3') : "); userFPrimers.push(selectedBases); 
+					}
+                    $( "#sel" ).append( tmseq + " | ");  
+                    $( "#sel" ).append( lenSB); $( "#sel" ).append( " bp | ");
+                    $( "#sel" ).append( $tmnn);$( "#sel" ).append( " °C  " );
+                    
+                    $( "#sel" ).append( "<br>");
+                    
+                    var string44 = tmseq + " | " + lenSB + " bp | " + String($tmnn.text()) + " °C  "; //alert(string44);
+                    
+                    if(ix<primerLoc==true){
+						userRTms.push(string44 );
+					}else{
+						userFTms.push(string44 );
+					}
+                    
+                    
+                });
+                
+			}
+			
+			
+		$( "#seltools" ).html("");	$( "#seltools" ).html("<br><button id='btnUCSC' onclick='sendToUCSC();' >In-Silico PCR</button><button id='btnDimer'  onclick='dimerCheck();' >Dimer Check</button><button id='btnUMELT'  onclick='senduMeltPreview();' >uMelt Preview</button>");	
+                
+};
+
+
+
+function complement (seq)	{
+	seq = seq.replace(/g/g,"x");
+	seq = seq.replace(/G/g,"X");
+	seq = seq.replace(/a/g,"y");
+	seq = seq.replace(/A/g,"Y");
+	seq = seq.replace(/t/g,"a");
+	seq = seq.replace(/T/g,"A");
+	seq = seq.replace(/c/g,"g");
+	seq = seq.replace(/C/g,"G");
+	seq = seq.replace(/x/g,"c");
+	seq = seq.replace(/X/g,"C");
+	seq = seq.replace(/y/g,"t");
+	seq = seq.replace(/Y/g,"T");		
+	return seq;
+}
+
+
+function reverse (seq)	{	
+	var tempDnaArray = new Array;
+	if (seq.search(/./) != -1)	{
+		tempDnaArray = seq.match(/./g);
+		tempDnaArray = tempDnaArray.reverse();
+		seq = tempDnaArray.join("");
+	}
+	return seq;
+}
+
+
+
+function selectPrimers(){
+	var rtmd = ''; var ftmd = '';
+	var arrayLength = userFPrimers.length;
+	for (var i = 0; i < arrayLength; i++) {
+		var curid=userFPrimers[i]; 
+		if(document.getElementById(curid).checked == true){
+			selectedFPrimer = curid; ftmd = userFTms[i];
+		}
+	}
+
+	var arrayLength = userRPrimers.length;
+	for (var i = 0; i < arrayLength; i++) {
+		var curid=userRPrimers[i];
+		if(document.getElementById(curid).checked == true){
+			selectedRPrimer = curid; rtmd = userRTms[i];
+		}
+	}
+	$( "#primerprev" ).html("");
+	$( "#primerprev" ).append("Forward (5-3') : " + ftmd + '<br>');
+	$( "#primerprev" ).append("Reverse (5-3') : " + rtmd + '<br>');
+	//$( "#primerprev" ).append( "Forward (5-3') : " + selectedFPrimer.replace(/\s+/g, '') + ' | ' + ftmd + ' °C<br>');
+	//$( "#primerprev" ).append( "Reverse (5-3') : " + reverse(complement(selectedRPrimer.replace(/\s+/g, ''))) + ' | ' + rtmd + ' °C<br>' );
+	
+
+}
+
+function checkForPrimerPair(){
+	var fcount = 0; var rcount=0;
+	
+	var arrayLength = userFPrimers.length;
+	for (var i = 0; i < arrayLength; i++) {
+		var curid=userFPrimers[i];
+		if(document.getElementById(curid).checked == true){
+			fcount = fcount + 1;
+		}
+	}
+
+	var arrayLength = userRPrimers.length;
+	for (var i = 0; i < arrayLength; i++) {
+		var curid=userRPrimers[i];
+		if(document.getElementById(curid).checked == true){
+			rcount = rcount + 1;
+		}
+	}
+	
+	if(fcount == 1 && rcount==1){
+		return true;
+	}else{return false;}
+	
+}
+
+function printMe(elem)
+{
+    var mywindow = window.open('', 'PRINT', 'height=600,width=600');
+
+    mywindow.document.write('<html><head><title>uVariants Design Window - dna-utah.org</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write('<h5>' + document.title  + '</h5>');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+}
+
+</script>
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28398796-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+//For my friend Kurt - I miss you and will see you someday.
+</script>
+
+</body>
+
+</html> 
