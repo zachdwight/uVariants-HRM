@@ -1,5 +1,6 @@
 # uVariants-HRM
-Software for automated annotation and design of amplicons (biotech, molecular diagnostics).
+
+Web application for automated annotation and design of amplicons (biotech, molecular diagnostics).
 
 Original site now under construction for rebuild: https://dna-utah.org/variants/
 
