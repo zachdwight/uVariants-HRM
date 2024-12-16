@@ -804,7 +804,7 @@ function updateuMeltPreview(){
 		var snippety = workseq.indexOf("/");
 		var abe = workseq.substring(starter,snippety-2); var bee = sax; var chip = workseq.substring(snippety+2,closer);
 		var productToSend = abe+bee+chip; productToSend=productToSend.replace(')',''); productToSend=productToSend.replace(/\s+/g, '');//alert(productToSend);
-		var mainURL = "../db/services/cgi-bin/umelt4uvar.cgi?seq=";
+		var mainURL = "no longer valid";
         mainURL += productToSend ;
         mainURL += "&rs=0&cation=20&mg=2&dmso=0";
 
@@ -822,7 +822,7 @@ var rid = sequence.indexOf(")")+1; var rreg = sequence.substring(rid,rid+50);
 var uberseq = freg+'x'+rreg;
 uberseq = uberseq.split(' ').join(''); 
 //var uberseq = "CTACGTACGTACGTACGATCGATCGACCTGATCGGCGCATCGTAGCTCxTACGCGCGTAGCCGATCGATCGTACGCTTCTAGCTAGC";
-var tmURL = "../db/services/cgi-bin/udesign4uvar.cgi?seq="+uberseq+"&rs=0&cation=20&mg=2.2&dmso=0";
+var tmURL = "no longer valid";
   $.get(tmURL, function(data, status){
     
                     var assay = data.split(",");					
