@@ -767,7 +767,7 @@ function senduMeltPreview(){
 		var snippety = workseq.indexOf("/");
 		var abe = workseq.substring(starter,snippety-2); var bee = workseq.substring(snippety,snippety-1); var chip = workseq.substring(snippety+2,closer);
 		var productToSend = abe+bee+chip; productToSend=productToSend.replace(')',''); productToSend=productToSend.replace(/\s+/g, '');
-		var mainURL = "../db/services/cgi-bin/umelt4uvar.cgi?seq=";
+		var mainURL = "no longer valid";
         mainURL += productToSend ;
         mainURL += "&rs=0&cation=20&mg=2&dmso=0";
 
