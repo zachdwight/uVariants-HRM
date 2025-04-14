@@ -4,8 +4,11 @@ Web application for automated annotation and design of amplicons (biotech, molec
 
 Current State: 
 March 26 2025 - the app is back in service with a todos....
+
 >> Update genome from hg38 to hs1 (https://hgdownload.soe.ucsc.edu/goldenPath/hs1/bigZips/)
+>> 
 >> Fix Gene annotation on SNP query (kick out to GUI)
+>> 
 >> Recalculate 6mers (3' check utility)
 
 The application relies on a 2bit file representation of the genome - much like UCSC's Genome Browser solutions.  Python is used on the backend to retrieve contextual sequences for SNPs queried, providing good performance.  I will be adding the entire 2bit genome backend soon on GitHub (after some cleanup now that quite a bit was updated).
