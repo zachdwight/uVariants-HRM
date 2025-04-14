@@ -2,8 +2,7 @@
 
 Web application for automated annotation and design of amplicons (biotech, molecular diagnostics).  
 
-Current State: 
-March 26 2025 - the app is back in service with a todos....
+Latest News (March 26 2025) - the app is back in service with some todos....
 
 >> Update genome from hg38 to hs1 (https://hgdownload.soe.ucsc.edu/goldenPath/hs1/bigZips/)
 >> 
