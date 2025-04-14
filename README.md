@@ -1,6 +1,6 @@
 # uVariants
 
-Web application for automated annotation and design of amplicons (biotech, molecular diagnostics).  
+Web application for automated annotation and design of amplicons by way of SNP/SNV query. Focus is molecular diagnostics / biotech research.
 
 Latest News (March 26 2025) - the app is back in service with some todos....
 
